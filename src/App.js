@@ -29,7 +29,6 @@ function App() {
     setLoading(true);
     setError(null);
     setCid(null);
-
     const formData = new FormData();
     formData.append('file', file);
 
@@ -48,7 +47,7 @@ function App() {
 
       const data = await response.json();
       setCid(data.value.cid);
-      setimagelink("https://ipfs.io/ipfs/" + data.value.cid)
+      setimagelink("https://ipfs.io/ipfs/" + data.value.cid + "/" + file.name)
     } catch (error) {
       setError(error.message);
     } finally {
@@ -65,8 +64,8 @@ function App() {
       account,
       collectionName,
       collectionDescription,
-      supply,
       "https://alice.com",
+      supply,
     ); // <:!:section_4
   
     await client.waitForTransaction(txnHash1, { checkSuccess: true });
